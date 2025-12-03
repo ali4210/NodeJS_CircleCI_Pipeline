@@ -7,14 +7,22 @@ jobs:
     steps:
       - checkout
       
-      # ======================================================
-      # THIS IS THE MISSING STEP THAT FIXES YOUR ERROR
-      # ======================================================
+      # 1. DEBUG: Show us what files are in the folder before we start
+      - run:
+          name: List Files Before Install
+          command: ls -la
+
+      # 2. CRITICAL: Install the tools (Jest)
       - run:
           name: Install Dependencies
           command: npm install
-      # ======================================================
 
+      # 3. DEBUG: Verify that Jest was actually installed
+      - run:
+          name: Verify Jest Exists
+          command: ls -la node_modules/.bin/jest
+
+      # 4. Run the test
       - run:
           name: Run Tests
           command: npm run test

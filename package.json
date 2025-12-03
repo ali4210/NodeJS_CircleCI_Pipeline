@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test": "jest",
-  "lint": "echo 'Linting check passed!'"
-}
+    "test": "jest",
+    "lint": "echo 'Linting check passed!'"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
 }

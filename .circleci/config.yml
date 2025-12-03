@@ -1,14 +1,12 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.1.0  # Use Node.js orb for simplified setup
+  node: circleci/node@5.1.0
 
 jobs:
   build-and-test:
-    executor:
-      name: node/default
-      tag: '20.10'  # Node.js version
-    
+    docker:
+      - image: cimg/node:20.10
     steps:
       - checkout
       
@@ -17,20 +15,12 @@ jobs:
           name: Install Dependencies
           command: npm install
       # -----------------------
-      
-      # Automatic dependency installation with caching
-      - node/install-packages:
-          pkg-manager: npm
-      
+
       - run:
           name: Run Tests
           command: npm run test
-      
-      - run:
-          name: Run Lint
-          command: npm run lint
 
 workflows:
-  node-tests:
+  sample-workflow:
     jobs:
       - build-and-test

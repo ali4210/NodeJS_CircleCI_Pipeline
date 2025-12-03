@@ -12,6 +12,12 @@ jobs:
     steps:
       - checkout
       
+      # --- THE FIX IS HERE ---
+      - run:
+          name: Install Dependencies
+          command: npm install
+      # -----------------------
+      
       # Automatic dependency installation with caching
       - node/install-packages:
           pkg-manager: npm

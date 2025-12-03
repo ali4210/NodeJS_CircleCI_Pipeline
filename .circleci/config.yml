@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@5.1.0
-
 jobs:
   build-and-test:
     docker:
@@ -10,17 +7,20 @@ jobs:
     steps:
       - checkout
       
-      # --- THE FIX IS HERE ---
+      # ======================================================
+      # THIS IS THE MISSING STEP THAT FIXES YOUR ERROR
+      # ======================================================
       - run:
           name: Install Dependencies
           command: npm install
-      # -----------------------
+      # ======================================================
 
       - run:
           name: Run Tests
           command: npm run test
 
 workflows:
+  version: 2
   sample-workflow:
     jobs:
       - build-and-test
